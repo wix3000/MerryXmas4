@@ -15,7 +15,7 @@ public class WorldStop : MonoBehaviour {
     public WorldStop spRight;
 
     public int battleHard;
-    public string sceneName;
+    public string bondingScene;
 
 	// Use this for initialization
 	void Start () {

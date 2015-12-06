@@ -122,7 +122,7 @@ public class RPG_ChatracterController : MonoBehaviour, IPlayerSwitch {
         float timer = Vector2.Distance(relativeVector, Vector2.zero) / this.speed;
         axisX = relativeVector.normalized.x;
         axisY = relativeVector.normalized.y;
-        while(timer > 0f) {
+        while(timer > Mathf.Epsilon) {
             timer -= Time.deltaTime;
             yield return null;
         }
@@ -197,23 +197,10 @@ public class RPG_ChatracterController : MonoBehaviour, IPlayerSwitch {
     /// <summary>
     /// 改變面向
     /// </summary>
-    /// <param name="dir">0:下 1:左 2:右 3:上</param>
-    public void Rotate(int dir) {
+    /// <param name="dir">0:上 1:右 2:左 3:下</param>
+    public void FaceByDir(int dir) {
         Rect rect = rawImage.uvRect;
-        switch (dir) {
-            case 0:
-                rect.y = 0f;
-                break;
-            case 1:
-                rect.y = 0.5f;
-                break;
-            case 2:
-                rect.y = 0.75f;
-                break;
-            case 3:
-                rect.y = 0.25f;
-                break;
-        }
+        rect.y = 0.25f * dir;
         rawImage.uvRect = rect;
     }
 
